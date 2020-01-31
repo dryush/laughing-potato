@@ -2,6 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using mail_bank.App;
+using mail_bank.Formats;
+using mail_bank.Repositories;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -31,6 +34,13 @@ namespace mail_bank
             services.AddAuthentication("ClientId")
                 .AddScheme<AuthenticationSchemeOptions, AuthenticationByClientIdHandler>("ClientId", opt => {
             });
+
+            services.AddMvc((opt) =>
+            {
+                opt.InputFormatters.Add(new ProductInputFormatter());
+            });
+
+            services.AddSingleton<IProductsRepository, TestProductsRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
