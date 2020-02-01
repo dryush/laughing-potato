@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace mail_bank.App
+namespace MailBank.App
 {
     public class NewProduct
     {

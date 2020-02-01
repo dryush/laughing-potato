@@ -2,9 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using mail_bank.App;
-using mail_bank.Formats;
-using mail_bank.Repositories;
+using MailBank.App;
+using MailBank.Formats;
+using MailBank.Repositories;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
@@ -15,10 +15,10 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-using mail_bank.Filters.StatusToBody;
-using mail_bank.Filters.Validation;
+using MailBank.Filters.StatusToBody;
+using MailBank.Filters.Validation;
 
-namespace mail_bank
+namespace MailBank
 {
     public class Startup
     {

@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace mail_bank.Filters.Validation
+namespace MailBank.Filters.Validation
 {
     public interface IValidator
     {

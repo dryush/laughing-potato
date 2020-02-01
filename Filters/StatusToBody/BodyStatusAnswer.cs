@@ -1,6 +1,6 @@
 ﻿using System.Net;
 
-namespace mail_bank.Filters.StatusToBody
+namespace MailBank.Filters.StatusToBody
 {
     public class BodyStatusAnswer
     {

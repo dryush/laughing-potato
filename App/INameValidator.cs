@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 
-namespace mail_bank.App
+namespace MailBank.App
 {
     public interface INameValidator
     {

@@ -2,7 +2,7 @@
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace mail_bank.Filters.Validation
+namespace MailBank.Filters.Validation
 {
     public abstract class BaseValidator<TValidateEntity> : IValidator
     {

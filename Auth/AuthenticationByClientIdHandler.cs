@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Authentication;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 
-namespace mail_bank {
+namespace MailBank {
     public class AuthenticationByClientIdHandler : AuthenticationHandler<AuthenticationSchemeOptions>
     {
         public AuthenticationByClientIdHandler(

@@ -1,4 +1,4 @@
-using mail_bank.App;
+using MailBank.App;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Authorization.Policy;
 using Microsoft.AspNetCore.Mvc;
@@ -15,10 +15,10 @@ using System.Linq;
 using System.Net;
 using System.Text;
 using System.Threading.Tasks;
-using static mail_bank.Filters.StatusToBody.BodyStatusAnswer;
+using static MailBank.Filters.StatusToBody.BodyStatusAnswer;
 
 
-namespace mail_bank.Filters.StatusToBody
+namespace MailBank.Filters.StatusToBody
 {
     public class HttpStatusToBodyFormatFilter :
         IAsyncActionFilter,

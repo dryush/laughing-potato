@@ -1,4 +1,4 @@
-﻿using mail_bank.App;
+﻿using MailBank.App;
 using Microsoft.AspNetCore.Mvc.Formatters;
 using Microsoft.Net.Http.Headers;
 using System;
@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace mail_bank.Formats
+namespace MailBank.Formats
 {
 
     //TODO: Если схожих форматов много, можно написать полноценный парсер для POCO

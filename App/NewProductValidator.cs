@@ -1,8 +1,8 @@
-﻿using mail_bank.Filters.Validation;
+﻿using MailBank.Filters.Validation;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace mail_bank.App
+namespace MailBank.App
 {
     public class NewProductValidator : BaseValidator<NewProduct>
     {

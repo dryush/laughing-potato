@@ -1,4 +1,4 @@
-﻿namespace mail_bank.Filters.Validation
+﻿namespace MailBank.Filters.Validation
 {
     public class ValidationResult
     {

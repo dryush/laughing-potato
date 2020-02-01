@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using mail_bank.App;
-using mail_bank.Repositories;
+using MailBank.App;
+using MailBank.Repositories;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
-namespace mail_bank.Controllers
+namespace MailBank.Controllers
 {
     [Route("[controller]/api/v1")]
     [ApiController]

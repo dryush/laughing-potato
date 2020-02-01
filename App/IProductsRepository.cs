@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace mail_bank.App
+namespace MailBank.App
 {
     public interface IProductsRepository
     {

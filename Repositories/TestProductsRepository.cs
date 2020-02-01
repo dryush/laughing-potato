@@ -1,11 +1,11 @@
-﻿using mail_bank.App;
+﻿using MailBank.App;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace mail_bank.Repositories
+namespace MailBank.Repositories
 {
     public class TestProductsRepository : IProductsRepository
     {

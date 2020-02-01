@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace mail_bank.Filters.Validation
+namespace MailBank.Filters.Validation
 {
     public class ValidationFilter : IAsyncActionFilter
     {

@@ -1,4 +1,4 @@
-﻿using mail_bank.App;
+﻿using MailBank.App;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -7,7 +7,7 @@ using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace mail_bank.Repositories
+namespace MailBank.Repositories
 {
     public class SimpleFileProductsRepository : IProductsRepository
     {
