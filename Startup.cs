@@ -38,6 +38,7 @@ namespace mail_bank
                 .AddScheme<AuthenticationSchemeOptions, AuthenticationByClientIdHandler>("ClientId", opt => {
             });
 
+
             services.AddTransient<IValidator, NewProductValidator>();
             services.AddTransient<IDescriptionValidator, DescriptionLenghtValidtor>();
             services.AddTransient<INameValidator, NameLengthValidator>();
@@ -54,7 +55,9 @@ namespace mail_bank
                     ));
             });
 
-            services.AddSingleton<IProductsRepository, TestProductsRepository>();
+            services.AddTransient<IProductsRepository>((p) => new JsonFileProductRepository(
+                () => Configuration["DbFilePath"]
+            ));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

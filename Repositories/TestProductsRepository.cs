@@ -15,7 +15,7 @@ namespace mail_bank.Repositories
         {
             return _db.LongCount() + 1;
         }
-        public Task<ExistProduct> Add(NewProduct product, CancellationToken cancellationToken = default) {
+        public Task<ExistProduct> AddAsync(NewProduct product, CancellationToken cancellationToken = default) {
             var existProduct = new ExistProduct(
                 _GetFreeId(),
                 product.Name,

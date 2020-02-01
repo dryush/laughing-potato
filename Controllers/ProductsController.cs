@@ -36,7 +36,7 @@ namespace mail_bank.Controllers
         [Authorize]
         public async Task<ActionResult> Add(NewProduct product, CancellationToken cancellationToken)
         {
-            await _repository.Add(product, cancellationToken);
+            await _repository.AddAsync(product, cancellationToken);
             return Ok();
         }
 
