@@ -6,6 +6,7 @@ using mail_bank.App;
 using mail_bank.Formats;
 using mail_bank.Repositories;
 using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -14,6 +15,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using mail_bank.Filters.StatusToBody;
 
 namespace mail_bank
 {
@@ -35,9 +37,14 @@ namespace mail_bank
                 .AddScheme<AuthenticationSchemeOptions, AuthenticationByClientIdHandler>("ClientId", opt => {
             });
 
+            services.AddTransient<AuthorizationPolicy>();
+            services.AddTransient<HttpStatusToBodyFormatFilter>();
             services.AddMvc((opt) =>
             {
                 opt.InputFormatters.Add(new ProductInputFormatter());
+                opt.Filters.Add( new HttpStatusToBodyFormatFilter(
+                        new AuthorizationPolicyBuilder().RequireAuthenticatedUser().Build()
+                    ));
             });
 
             services.AddSingleton<IProductsRepository, TestProductsRepository>();
