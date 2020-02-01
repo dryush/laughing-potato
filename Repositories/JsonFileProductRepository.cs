@@ -5,6 +5,7 @@ using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Text.Json;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace mail_bank.Repositories
@@ -16,22 +17,26 @@ namespace mail_bank.Repositories
         {
         }
 
-        private static async Task<ICollection<ExistProduct>> ReadAsync(string path)
+        private static async Task<ICollection<ExistProduct>> ReadAsync(string path, CancellationToken cancellationToken)
         {
             using (var file = File.Open(path, FileMode.OpenOrCreate, FileAccess.Read))
             {
-                //string content = await file.ReadToEndAsync();
-                var db = file.Length > 0 ? await JsonSerializer.DeserializeAsync<ExistProduct[]>(file) : null;
+                var db = file.Length > 0 ? await JsonSerializer.DeserializeAsync<ExistProduct[]>(
+                    file, 
+                    cancellationToken: cancellationToken) : null;
                 return db?.ToList() ?? new List<ExistProduct>();
             }
         }
 
 
-        private static async Task WriteAsync(string path, IEnumerable<ExistProduct> db)
+        private static async Task WriteAsync(string path, IEnumerable<ExistProduct> db, CancellationToken cancellationToken)
         {
             using (var file = File.Open(path, FileMode.OpenOrCreate, FileAccess.Write))
             {
-                await JsonSerializer.SerializeAsync<IEnumerable<ExistProduct>>(file, db);
+                await JsonSerializer.SerializeAsync<IEnumerable<ExistProduct>>(
+                    file, 
+                    db,
+                    cancellationToken: cancellationToken);
                 await file.FlushAsync();
                 file.Close();
             }
