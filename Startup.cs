@@ -16,6 +16,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using mail_bank.Filters.StatusToBody;
+using mail_bank.Filters.Validation;
 
 namespace mail_bank
 {
@@ -37,11 +38,17 @@ namespace mail_bank
                 .AddScheme<AuthenticationSchemeOptions, AuthenticationByClientIdHandler>("ClientId", opt => {
             });
 
+            services.AddTransient<IValidator, NewProductValidator>();
+            services.AddTransient<IDescriptionValidator, DescriptionLenghtValidtor>();
+            services.AddTransient<INameValidator, NameLengthValidator>();
+
             services.AddTransient<AuthorizationPolicy>();
             services.AddTransient<HttpStatusToBodyFormatFilter>();
+            services.AddTransient<ValidationFilter>();
             services.AddMvc((opt) =>
             {
                 opt.InputFormatters.Add(new ProductInputFormatter());
+                opt.Filters.AddService<ValidationFilter>();
                 opt.Filters.Add( new HttpStatusToBodyFormatFilter(
                         new AuthorizationPolicyBuilder().RequireAuthenticatedUser().Build()
                     ));

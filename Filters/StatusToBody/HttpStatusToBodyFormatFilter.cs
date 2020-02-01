@@ -117,8 +117,8 @@ namespace mail_bank.Filters.StatusToBody
             {
                 context.Result = new OkObjectResult(Empty(
                     (int?)HttpStatusCode.BadRequest,
-                    string.Join("\n", context.ModelState.Select(s =>
-                        s.Key + ": " + string.Join("\n\t", s.Value.Errors.Select(e => e.ErrorMessage))
+                    string.Join("\n\n", context.ModelState.Select(s =>
+                        s.Key + ": " + string.Join("\n \t", s.Value.Errors.Select(e => e.ErrorMessage))
                     ))
                 ));
 
