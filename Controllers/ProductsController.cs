@@ -11,7 +11,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace MailBank.Controllers
 {
-    [Route("[controller]/api/v1")]
+    [Route("/api/v1/[controller]")]
     [ApiController]
     public class ProductsController : ControllerBase
     {

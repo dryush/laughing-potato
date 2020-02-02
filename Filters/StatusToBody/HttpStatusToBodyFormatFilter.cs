@@ -24,8 +24,7 @@ namespace MailBank.Filters.StatusToBody
         IAsyncActionFilter,
         IAsyncResourceFilter,
         IAsyncResultFilter,
-        IAsyncExceptionFilter,
-        IAsyncAuthorizationFilter
+        IAsyncExceptionFilter
     {
         public AuthorizationPolicy Policy;
 
@@ -71,26 +70,7 @@ namespace MailBank.Filters.StatusToBody
                     _ => resultContext.Result
                 };
         }
-
-        public async Task OnAuthorizationAsync(AuthorizationFilterContext context)
-        {
-
-            // Allow Anonymous skips all authorization
-            if (context.Filters.Any(item => item is IAllowAnonymousFilter))
-            {
-                return;
-            }
-
-            var policyEvaluator = context.HttpContext.RequestServices.GetRequiredService<IPolicyEvaluator>();
-            var authenticateResult = await policyEvaluator.AuthenticateAsync(Policy, context.HttpContext);
-            var authorizeResult = await policyEvaluator.AuthorizeAsync(Policy, authenticateResult, context.HttpContext, context);
-
-            if (authorizeResult.Challenged)
-                context.Result = new OkObjectResult(Empty(401));
-            else if (authorizeResult.Forbidden)
-                context.Result = new OkObjectResult(Empty(403));
-        }
-
+        
         public async Task OnExceptionAsync(ExceptionContext context)
         {
             if (!context.ExceptionHandled)
